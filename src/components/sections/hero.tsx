@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
-          <div className="px-4 pb-20 pt-20 text-center sm:px-8 lg:pt-24">
+          <div className="px-4 pb-14 pt-14 text-center sm:px-8 lg:pt-16">
             {/* Badge with rotating glow border like 8lab */}
             <div className="glow-btn" style={{ padding: "12px 28px" }}>
               <span className="text-[16px] font-semibold tracking-[-0.2px] text-white">
@@ -79,7 +79,7 @@ export default function Hero() {
             </div>
 
             {/* Main heading — 64px like 8lab, semibold, tight tracking */}
-            <h1 className="mx-auto mt-8 max-w-[820px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[64px]">
+            <h1 className="mx-auto mt-6 max-w-[820px] font-[family-name:var(--font-heading)] text-[32px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[44px] lg:text-[52px]">
               Le digital{" "}
               <span className="font-medium text-[#5e5f6e]">qui fait</span>{" "}
               la différence{" "}
