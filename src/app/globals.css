@@ -256,11 +256,6 @@ body {
   }
 }
 
-.line-sweep-v {
-  position: relative;
-  overflow: hidden;
-}
-
 .line-sweep-v::after {
   content: "";
   position: absolute;
