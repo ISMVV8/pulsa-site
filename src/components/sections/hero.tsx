@@ -31,25 +31,25 @@ export default function Hero() {
       />
 
       {/* Decorative horizontal lines under nav */}
-      <div className="relative h-px w-full bg-[#ffffff0f]">
+      <div className="line-sweep h-px w-full bg-[#ffffff0f]">
         <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
       </div>
 
       {/* Main content area */}
       <div className="mx-auto max-w-[970px] px-6">
         <div className="relative">
-          {/* Vertical lines */}
-          <div className="absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]">
+          {/* Vertical lines with sweep animation */}
+          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]">
             <div className="absolute left-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
           </div>
-          <div className="absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]">
+          <div className="absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ overflow: "hidden" }}>
             <div className="absolute right-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
           <div className="px-4 pb-20 pt-24 text-center sm:px-8 lg:pt-28">
-            {/* Badge */}
-            <div className="inline-flex items-center rounded-full border border-[#ffffff0f] bg-[#ffffff0f] px-5 py-2.5 backdrop-blur-[5px]">
+            {/* Badge with rotating glow border like 8lab */}
+            <div className="glow-btn">
               <span className="text-[15.25px] font-semibold tracking-[-0.2px] text-[#afb0b9]">
                 Pulsa Creatives : Agence Digitale
               </span>
@@ -79,7 +79,7 @@ export default function Hero() {
                 href="#contact"
                 className="group inline-flex items-center gap-3 rounded-full border border-[#e0e0e0] bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975]"
               >
-                <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e] pulse-green" />
                 Demander un devis
                 <svg
                   width="16"
