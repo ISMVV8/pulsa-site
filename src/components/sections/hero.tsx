@@ -42,7 +42,7 @@ export default function Hero() {
           <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]">
             <div className="absolute left-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
           </div>
-          <div className="absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ overflow: "hidden" }}>
+          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "3s" }}>
             <div className="absolute right-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
           </div>
 
@@ -146,8 +146,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Horizontal line with glow */}
-      <div className="relative h-px w-full bg-[#ffffff0f]">
+      {/* Horizontal line with glow + sweep */}
+      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "2s" }}>
         <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
         <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
       </div>
@@ -156,8 +156,8 @@ export default function Hero() {
       <div className="mx-auto max-w-[970px] px-6">
         <div className="relative">
           {/* Vertical lines */}
-          <div className="absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" />
-          <div className="absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" />
+          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
+          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "4s" }} />
 
           <div className="grid grid-cols-3 sm:grid-cols-6">
             {listingItems.map((item, i) => {
@@ -185,8 +185,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Horizontal line with glow */}
-      <div className="relative h-px w-full bg-[#ffffff0f]">
+      {/* Horizontal line with glow + sweep */}
+      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "4s" }}>
         <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
         <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
       </div>
@@ -194,8 +194,8 @@ export default function Hero() {
       {/* Stats section */}
       <div className="mx-auto max-w-[970px] px-6">
         <div className="relative">
-          <div className="absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" />
-          <div className="absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" />
+          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "2s" }} />
+          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "5s" }} />
 
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {[
@@ -223,7 +223,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom line */}
-      <div className="relative h-px w-full bg-[#ffffff0f]">
+      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "5s" }}>
         <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
         <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
       </div>
