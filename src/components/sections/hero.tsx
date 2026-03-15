@@ -28,6 +28,31 @@ const stats = [
 export default function Hero() {
   return (
     <section className="relative bg-[#0a0a0a] pt-[72px]">
+      {/* Background glow lights */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Center glow - warm white/rosé */}
+        <div
+          className="absolute left-1/2 top-1/3 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.07]"
+          style={{
+            background: "radial-gradient(ellipse at center, #ffffff 0%, #ffd4cc 30%, #e8c4ff 60%, transparent 80%)",
+          }}
+        />
+        {/* Left glow - subtle blue */}
+        <div
+          className="absolute -left-32 top-1/4 h-[500px] w-[500px] rounded-full opacity-[0.04]"
+          style={{
+            background: "radial-gradient(circle, #007ce2 0%, transparent 70%)",
+          }}
+        />
+        {/* Right glow - subtle warm */}
+        <div
+          className="absolute -right-32 top-1/3 h-[400px] w-[400px] rounded-full opacity-[0.05]"
+          style={{
+            background: "radial-gradient(circle, #ffccaa 0%, transparent 70%)",
+          }}
+        />
+      </div>
+
       {/* Hero content */}
       <div className="mx-auto max-w-[970px] px-6">
         {/* Vertical lines */}
