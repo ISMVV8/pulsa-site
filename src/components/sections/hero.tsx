@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
-          <div className="px-4 pb-20 pt-20 text-center sm:px-8 lg:pt-28">
+          <div className="px-4 pb-28 pt-28 text-center sm:px-8 lg:pt-36">
             {/* Badge with rotating glow border like 8lab */}
             <div className="badge-8lab">
               <div className="badge-8lab-inner">
@@ -81,7 +81,7 @@ export default function Hero() {
             </div>
 
             {/* Main heading — 64px like 8lab, semibold, tight tracking */}
-            <h1 className="mx-auto mt-6 max-w-[820px] font-[family-name:var(--font-heading)] text-[32px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[44px] lg:text-[52px]">
+            <h1 className="mx-auto mt-8 max-w-[820px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[60px]">
               Le digital{" "}
               <span className="font-medium text-[#5e5f6e]">qui fait</span>{" "}
               la différence{" "}
@@ -90,7 +90,7 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle — with bold white + gray like 8lab */}
-            <p className="mx-auto mt-6 max-w-[640px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
+            <p className="mx-auto mt-8 max-w-[640px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
               <span className="font-bold text-white">
                 Pulsa Creatives vous accompagne de A à Z,
               </span>{" "}
@@ -99,7 +99,7 @@ export default function Hero() {
             </p>
 
             {/* CTA Button — white like 8lab */}
-            <div className="mt-10">
+            <div className="mt-12">
               <Link
                 href="#contact"
                 className="group inline-flex items-center gap-3 rounded-full border border-[#e0e0e0] bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975]"
