@@ -222,23 +222,23 @@ export default function Hero() {
           <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "2s" }} />
           <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "5s" }} />
 
-          <div className="grid grid-cols-2 sm:grid-cols-4">
+          <div className="grid grid-cols-4">
             {[
               { label: "Projets livrés", value: "50+" },
               { label: "Satisfaction", value: "4.9/5" },
-              { label: "Délai moyen", value: "7 jours" },
+              { label: "Délai moyen", value: "7j" },
               { label: "Sur mesure", value: "100%" },
             ].map((stat, i) => (
               <div
                 key={stat.label}
-                className={`flex h-[130px] flex-col items-center justify-center gap-3 ${
+                className={`flex h-[70px] flex-col items-center justify-center gap-1 sm:h-[130px] sm:gap-3 ${
                   i < 3 ? "border-r border-[#ffffff0f]" : ""
                 }`}
               >
-                <span className="text-[14px] text-[#abaaa8]">
+                <span className="text-[10px] text-[#abaaa8] sm:text-[14px]">
                   {stat.label}
                 </span>
-                <span className="font-[family-name:var(--font-heading)] text-[28px] font-medium leading-none text-white sm:text-[32px]">
+                <span className="font-[family-name:var(--font-heading)] text-[18px] font-medium leading-none text-white sm:text-[32px]">
                   {stat.value}
                 </span>
               </div>
