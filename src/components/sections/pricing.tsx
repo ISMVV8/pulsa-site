@@ -121,9 +121,10 @@ export default function Pricing() {
                   ))}
                 </ul>
 
+                <div className="mt-auto pt-8">
                 <a
                   href="#contact"
-                  className={`btn-cta mt-8 flex items-center justify-center gap-2 rounded-full px-5 py-3 text-base font-medium ${
+                  className={`btn-cta flex items-center justify-center gap-2 rounded-full px-5 py-3 text-base font-medium ${
                     plan.popular
                       ? "bg-white text-[#131316]"
                       : "border border-[#ffffff17] bg-gradient-to-b from-[#161722] to-transparent text-white"
@@ -132,6 +133,7 @@ export default function Pricing() {
                   <span>Commencer</span>
                   <ArrowRight size={16} />
                 </a>
+                </div>
               </div>
             ))}
           </div>
