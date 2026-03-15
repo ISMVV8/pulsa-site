@@ -81,7 +81,7 @@ export default function Hero() {
             </div>
 
             {/* Main heading — 64px like 8lab, semibold, tight tracking */}
-            <h1 className="mx-auto mt-8 max-w-[820px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[60px]">
+            <h1 className="mx-auto mt-8 max-w-[900px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[60px]">
               Le digital{" "}
               <span className="font-medium text-[#5e5f6e]">qui fait</span>{" "}
               la différence{" "}
@@ -90,7 +90,7 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle — with bold white + gray like 8lab */}
-            <p className="mx-auto mt-8 max-w-[640px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
+            <p className="mx-auto mt-8 max-w-[700px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
               <span className="font-bold text-white">
                 Pulsa Creatives vous accompagne de A à Z,
               </span>{" "}
