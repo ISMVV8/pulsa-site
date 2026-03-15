@@ -72,10 +72,13 @@ export default function Hero() {
           {/* Hero inner — generous padding like 8lab */}
           <div className="px-4 pb-14 pt-14 text-center sm:px-8 lg:pt-16">
             {/* Badge with rotating glow border like 8lab */}
-            <div className="glow-btn" style={{ padding: "8px 18px" }}>
-              <span className="text-[13px] font-semibold text-white">
-                Pulsa Creatives : Agence Digitale
-              </span>
+            <div className="badge-8lab">
+              <div className="badge-8lab-glow" />
+              <div className="badge-8lab-inner">
+                <span className="text-[13px] font-semibold text-white">
+                  Pulsa Creatives : Agence Digitale
+                </span>
+              </div>
             </div>
 
             {/* Main heading — 64px like 8lab, semibold, tight tracking */}

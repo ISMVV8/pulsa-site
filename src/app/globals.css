@@ -125,38 +125,31 @@ body {
     0 2px 3px #0000000a;
 }
 
-/* 8lab Animated Glow Button */
-.glow-btn {
+/* 8lab Badge — compact pill with rotating glow border */
+.badge-8lab {
+  display: inline-flex;
   position: relative;
-  overflow: hidden;
-  border-radius: 9999px;
-  padding: 10px 16px;
-}
-
-.glow-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   border-radius: 9999px;
   padding: 1px;
-  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent 30%);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
+}
+
+.badge-8lab-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.4), transparent 30%);
   animation: spin 4s linear infinite;
 }
 
-.glow-btn::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 9999px;
-  background-color: #1a1a2e;
-}
-
-.glow-btn > * {
+.badge-8lab-inner {
   position: relative;
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: #111118;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 20px;
 }
 
 /* CTA Button hover */
