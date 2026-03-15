@@ -6,7 +6,7 @@ import Pricing from "@/components/sections/pricing";
 import Portfolio from "@/components/sections/portfolio";
 import Process from "@/components/sections/process";
 import Testimonials from "@/components/sections/testimonials";
-import CTA from "@/components/sections/cta";
+import FAQ from "@/components/sections/faq";
 
 export default function Home() {
   return (
@@ -15,11 +15,11 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <Pricing />
         <Portfolio />
         <Process />
+        <Pricing />
         <Testimonials />
-        <CTA />
+        <FAQ />
       </main>
       <Footer />
     </>

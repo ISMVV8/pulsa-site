@@ -1,52 +1,70 @@
-const links = [
-  { label: "Services", href: "#services" },
-  { label: "Tarifs", href: "#pricing" },
-  { label: "Réalisations", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
-];
+const footerLinks = {
+  Services: [
+    { label: "Sites Web", href: "#services" },
+    { label: "Landing Pages", href: "#services" },
+    { label: "E-Commerce", href: "#services" },
+    { label: "SEO", href: "#services" },
+    { label: "Gestion Ads", href: "#services" },
+  ],
+  Navigation: [
+    { label: "Réalisations", href: "#portfolio" },
+    { label: "Processus", href: "#process" },
+    { label: "Tarifs", href: "#pricing" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
+  ],
+};
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.05]">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-1.5">
-            <span className="text-lg font-bold tracking-tight text-white">
+    <footer className="bg-black">
+      <div className="mx-auto max-w-[970px] px-6 py-16">
+        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+          {/* Logo + description */}
+          <div className="max-w-[300px]">
+            <span className="font-heading text-xl font-semibold text-white">
               PULSA
             </span>
-            <span className="text-lg font-light tracking-tight text-zinc-400">
-              CREATIVES
-            </span>
+            <p className="mt-4 text-sm leading-relaxed text-[#abaaa8]">
+              Agence digitale premium à Bruxelles. Nous créons des expériences digitales qui convertissent.
+            </p>
           </div>
 
-          {/* Nav links */}
-          <nav className="flex flex-wrap justify-center gap-6">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-zinc-400 transition-colors duration-200 hover:text-white"
-              >
-                {link.label}
-              </a>
+          {/* Links */}
+          <div className="flex gap-16">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category} className="flex flex-col gap-4">
+                <span className="text-sm font-medium text-white">
+                  {category}
+                </span>
+                {links.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.href}
+                    className="text-sm text-[#abaaa8] transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             ))}
-          </nav>
+          </div>
+        </div>
 
-          {/* Email */}
+        {/* Separator */}
+        <div className="my-10 h-px bg-[#ffffff0f]" />
+
+        {/* Bottom */}
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <span className="text-sm text-[#abaaa8]">
+            © 2024 Pulsa Creatives. Tous droits réservés.
+          </span>
           <a
             href="mailto:contact@pulsacreatives.com"
-            className="text-sm text-zinc-400 transition-colors duration-200 hover:text-white"
+            className="text-sm text-[#abaaa8] transition-colors hover:text-white"
           >
             contact@pulsacreatives.com
           </a>
-        </div>
-
-        {/* Bottom */}
-        <div className="mt-8 border-t border-white/[0.05] pt-8 text-center">
-          <p className="text-xs text-zinc-600">
-            © 2026 Pulsa Creatives. Tous droits réservés.
-          </p>
         </div>
       </div>
     </footer>

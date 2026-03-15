@@ -1,164 +1,147 @@
 import { Check, ArrowRight } from "lucide-react";
 
-interface Plan {
-  name: string;
-  price: string;
-  priceLabel: string;
-  description: string;
-  features: string[];
-  popular?: boolean;
-  cta: string;
-}
-
-const plans: Plan[] = [
+const plans = [
   {
     name: "Starter",
-    price: "499€",
-    priceLabel: "À partir de",
-    description: "Landing page ou site one-page",
+    price: "499",
+    description: "Landing page ou one-page pour lancer rapidement.",
     features: [
-      "Design personnalisé",
-      "Responsive",
+      "1 page optimisée",
+      "Design responsive",
       "SEO de base",
-      "Livraison 7 jours",
-      "1 révision incluse",
+      "Formulaire de contact",
+      "Livraison 5 jours",
     ],
-    cta: "Choisir Starter",
+    popular: false,
   },
   {
     name: "Business",
-    price: "1 499€",
-    priceLabel: "À partir de",
-    description: "Site vitrine multi-pages + SEO",
+    price: "1 499",
+    description: "Site vitrine multi-pages pour développer votre activité.",
     features: [
       "Jusqu'à 5 pages",
-      "Design premium",
-      "SEO complet",
-      "Blog intégré",
-      "3 révisions",
+      "Design sur mesure",
+      "SEO avancé",
+      "Animations premium",
+      "CMS intégré",
       "Support 30 jours",
     ],
     popular: true,
-    cta: "Choisir Business",
   },
   {
     name: "Premium",
     price: "Sur devis",
-    priceLabel: "Projet sur mesure",
-    description: "Solution complète et personnalisée",
+    description: "Solution complète et personnalisée pour scaler.",
     features: [
       "Pages illimitées",
-      "E-commerce",
-      "Fonctionnalités sur mesure",
-      "SEO avancé",
-      "Branding complet",
-      "Support 6 mois",
+      "Design 100% custom",
+      "SEO expert",
+      "E-commerce / SaaS",
+      "Intégrations API",
+      "Support prioritaire",
     ],
-    cta: "Demander un devis",
+    popular: false,
   },
 ];
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-32 sm:py-40">
-      {/* Orbs */}
-      <div className="orb orb-violet animate-float absolute -right-40 top-20 h-[400px] w-[400px] opacity-20" />
-      <div className="orb orb-emerald animate-float-slower absolute -left-20 bottom-20 h-[300px] w-[300px] opacity-15" />
+    <section id="pricing" className="relative bg-[#070707] py-20">
+      <div className="line-h" />
+      <div className="line-glow" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mb-20 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500">
-            Tarifs
-          </span>
-          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Des formules{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-              adaptées à vos ambitions
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
-            Choisissez la formule qui correspond à votre projet. Tous nos tarifs
-            incluent un design premium.
-          </p>
-        </div>
+      <div className="relative mx-auto flex max-w-[970px] px-6">
+        <div className="line-v hidden self-stretch md:block" />
 
-        {/* Plans */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative rounded-2xl border bg-white/[0.03] p-8 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.06] sm:p-10 ${
-                plan.popular
-                  ? "border-violet-500/40 shadow-[0_0_60px_-15px_rgba(139,92,246,0.3)]"
-                  : "border-white/[0.06] hover:border-white/[0.1]"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-blue-500 px-4 py-1 text-xs font-semibold text-white">
-                    Le plus populaire
-                  </span>
-                </div>
-              )}
+        <div className="flex-1 py-20">
+          {/* Header */}
+          <div className="mb-12 flex flex-col items-center gap-6 text-center">
+            <div className="glow-btn">
+              <span className="text-[15.25px] font-semibold tracking-[-0.2px] text-white">
+                Nos Tarifs
+              </span>
+            </div>
 
-              <h3 className="text-xl font-bold text-white">{plan.name}</h3>
-              <p className="mt-1 text-sm text-zinc-500">{plan.description}</p>
+            <h2 className="font-heading text-[36px] font-medium leading-[1.2] tracking-tight text-white sm:text-[44px]">
+              Des prix transparents.
+            </h2>
 
-              <div className="mt-6 mb-8">
-                <span className="text-xs text-zinc-500">{plan.priceLabel}</span>
-                <div className="mt-1 text-4xl font-bold text-white">
-                  {plan.price}
-                </div>
-              </div>
+            <p className="max-w-[600px] text-lg leading-relaxed text-[#abaaa8]">
+              Choisissez la formule qui correspond à vos besoins. Pas de frais cachés.
+            </p>
+          </div>
 
-              <ul className="mb-8 space-y-3">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center gap-3 text-sm text-zinc-400"
-                  >
-                    <Check
-                      size={16}
-                      className="shrink-0 text-violet-400"
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#contact"
-                className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all duration-200 ${
+          {/* Plans Grid */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {plans.map((plan, i) => (
+              <div
+                key={i}
+                className={`flex flex-col rounded-3xl border p-6 ${
                   plan.popular
-                    ? "bg-white text-black hover:bg-zinc-200"
-                    : "border border-white/[0.1] bg-white/[0.03] text-white hover:border-white/[0.2] hover:bg-white/[0.06]"
+                    ? "border-[#353638] bg-[#131316] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                    : "border-[#242429] bg-[#131316]"
                 }`}
               >
-                {plan.cta}
-                <ArrowRight size={16} />
-              </a>
-            </div>
-          ))}
+                {plan.popular && (
+                  <div className="mb-4 w-fit rounded-full border border-[#ffffff0f] bg-[#ffffff0f] px-3 py-1 text-xs font-medium text-white">
+                    Populaire
+                  </div>
+                )}
+
+                <h3 className="font-heading text-xl font-medium text-white">
+                  {plan.name}
+                </h3>
+
+                <div className="mt-4 flex items-baseline gap-1">
+                  {plan.price === "Sur devis" ? (
+                    <span className="font-heading text-[32px] font-medium text-white">
+                      Sur devis
+                    </span>
+                  ) : (
+                    <>
+                      <span className="font-heading text-[32px] font-medium text-white">
+                        €{plan.price}
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                <p className="mt-3 text-sm leading-relaxed text-[#abaaa8]">
+                  {plan.description}
+                </p>
+
+                <div className="my-6 h-px bg-[#ffffff0f]" />
+
+                <ul className="flex flex-col gap-3">
+                  {plan.features.map((feature, j) => (
+                    <li key={j} className="flex items-center gap-3">
+                      <Check size={16} className="flex-shrink-0 text-white" strokeWidth={2} />
+                      <span className="text-sm text-[#abaaa8]">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className={`btn-cta mt-8 flex items-center justify-center gap-2 rounded-full px-5 py-3 text-base font-medium ${
+                    plan.popular
+                      ? "bg-white text-[#131316]"
+                      : "border border-[#ffffff17] bg-gradient-to-b from-[#161722] to-transparent text-white"
+                  }`}
+                >
+                  <span>Commencer</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Banner */}
-        <div className="mt-16 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 text-center backdrop-blur-xl sm:p-10">
-          <h3 className="text-xl font-bold sm:text-2xl">
-            Chaque projet est unique.{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-              Contactez-nous pour un devis personnalisé.
-            </span>
-          </h3>
-          <a
-            href="#contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-colors duration-200 hover:bg-zinc-200"
-          >
-            Nous contacter
-            <ArrowRight size={16} />
-          </a>
-        </div>
+        <div className="line-v hidden self-stretch md:block" />
       </div>
+
+      <div className="line-h" />
+      <div className="line-glow-right" />
     </section>
   );
 }

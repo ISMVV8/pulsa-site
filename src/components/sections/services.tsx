@@ -1,113 +1,109 @@
-import {
-  Globe,
-  MousePointerClick,
-  ShoppingCart,
-  Palette,
-  Search,
-  Megaphone,
-} from "lucide-react";
-import type { ReactNode } from "react";
+import { Globe, PenTool, ShoppingBag, Search, Megaphone, Palette } from "lucide-react";
 
-interface Service {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  features: string[];
-}
-
-const services: Service[] = [
+const services = [
   {
-    icon: <Globe size={24} className="text-violet-400" />,
+    icon: Globe,
     title: "Sites Web",
-    description:
-      "Sites vitrines modernes, rapides et performants.",
-    features: ["Design sur mesure", "Responsive mobile-first", "SEO optimisé", "Performance A+"],
+    description: "Design custom, responsive, optimisé SEO et haute performance.",
+    features: ["Design sur mesure", "Responsive", "SEO optimisé", "Performance"],
   },
   {
-    icon: <MousePointerClick size={24} className="text-violet-400" />,
+    icon: PenTool,
     title: "Landing Pages",
-    description:
-      "Pages de conversion ultra-optimisées.",
-    features: ["Copywriting persuasif", "A/B testing", "CTA stratégiques", "Tracking complet"],
+    description: "Pages de conversion avec copywriting, A/B testing et tracking.",
+    features: ["Copywriting", "A/B Testing", "CTA optimisés", "Tracking"],
   },
   {
-    icon: <ShoppingCart size={24} className="text-violet-400" />,
+    icon: ShoppingBag,
     title: "E-Commerce",
-    description:
-      "Boutiques en ligne qui convertissent.",
-    features: ["Shopify/WooCommerce", "Tunnel de vente", "Paiement sécurisé", "Gestion stock"],
+    description: "Boutiques en ligne Shopify & WooCommerce, tunnel de vente complet.",
+    features: ["Shopify / WooCommerce", "Tunnel de vente", "Paiement sécurisé", "Gestion stock"],
   },
   {
-    icon: <Palette size={24} className="text-violet-400" />,
+    icon: Palette,
     title: "Branding",
-    description:
-      "Identité visuelle complète et cohérente.",
-    features: ["Logo & charte graphique", "Supports print/web", "Stratégie de marque", "Guidelines"],
+    description: "Identité visuelle complète : logo, charte graphique et guidelines.",
+    features: ["Logo", "Charte graphique", "Stratégie de marque", "Guidelines"],
   },
   {
-    icon: <Search size={24} className="text-violet-400" />,
+    icon: Search,
     title: "SEO",
-    description:
-      "Visibilité organique et trafic qualifié.",
-    features: ["Audit technique", "Optimisation on-page", "Stratégie de contenu", "Suivi mensuel"],
+    description: "Audit technique, optimisation on-page, stratégie de contenu et suivi.",
+    features: ["Audit technique", "On-page", "Contenu", "Suivi mensuel"],
   },
   {
-    icon: <Megaphone size={24} className="text-violet-400" />,
+    icon: Megaphone,
     title: "Gestion Ads",
-    description:
-      "Publicités rentables sur toutes les plateformes.",
-    features: ["Meta Ads", "Google Ads", "TikTok Ads", "Rapports de performance"],
+    description: "Campagnes Meta, Google et TikTok Ads avec rapports détaillés.",
+    features: ["Meta Ads", "Google Ads", "TikTok Ads", "Rapports"],
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-32 sm:py-40">
-      {/* Orb */}
-      <div className="orb orb-blue animate-float-slower absolute -left-40 top-0 h-[400px] w-[400px] opacity-20" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+    <section id="services" className="bg-[#f7f7f8] py-20">
+      <div className="mx-auto max-w-[970px] px-6">
         {/* Header */}
-        <div className="mb-20 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500">
-            Nos services
-          </span>
-          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Tout ce qu&apos;il faut pour{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-              dominer en ligne
-            </span>
+        <div className="flex flex-col items-start gap-6">
+          {/* Preheading */}
+          <div className="rounded-[100000000px] border border-[#1111111a] p-[7px]">
+            <div className="shadow-8lab-sm rounded-[99999px] bg-white px-4 py-2.5">
+              <span className="text-[15.25px] font-semibold tracking-[-0.2px] text-[#5e5f6e]">
+                Nos Services
+              </span>
+            </div>
+          </div>
+
+          <h2 className="font-heading text-[36px] font-medium leading-[1.2] tracking-tight text-[#131316] sm:text-[44px]">
+            Tout ce dont vous avez besoin.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
-            De la conception à la conversion, nous couvrons l&apos;ensemble de
-            vos besoins digitaux.
+
+          <p className="max-w-[600px] text-[18px] leading-relaxed text-[#5e5f6e]">
+            Un écosystème complet de services digitaux pour lancer, développer et scaler votre présence en ligne.
           </p>
+
+          <a
+            href="#contact"
+            className="btn-cta inline-flex items-center gap-2.5 rounded-full border border-black bg-gradient-to-b from-[#363636] to-black px-5 py-3 text-base font-medium text-white"
+          >
+            Commencer un projet
+          </a>
         </div>
 
-        {/* Grid — 3x2 */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.06] sm:p-10"
-            >
-              <div className="mb-5">{service.icon}</div>
-              <h3 className="text-lg font-bold text-white">{service.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                {service.description}
-              </p>
-              <ul className="mt-5 space-y-2">
-                {service.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="text-sm text-zinc-500"
-                  >
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        {/* Cards Grid */}
+        <div className="mt-10">
+          <div className="rounded-[24px] border border-[#1111111a] p-[7px] shadow-[0_0_0_1px_#fff]">
+            <div className="shadow-8lab grid gap-0 overflow-hidden rounded-[20px] bg-white sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((service, i) => (
+                <div
+                  key={i}
+                  className={`flex flex-col gap-4 border-[#1111111a] p-6 ${
+                    i < 3 ? "border-b" : ""
+                  } ${i % 3 !== 2 ? "lg:border-r" : ""} ${i % 2 === 0 ? "max-lg:border-r max-sm:!border-r-0" : ""}`}
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#1111111a] bg-[#f7f7f8]">
+                    <service.icon size={20} className="text-[#131316]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-heading text-lg font-medium text-[#131316]">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[#5e5f6e]">
+                    {service.description}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                    {service.features.map((feat, j) => (
+                      <span
+                        key={j}
+                        className="rounded-full border border-[#1111111a] bg-[#f7f7f8] px-3 py-1 text-xs text-[#5e5f6e]"
+                      >
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

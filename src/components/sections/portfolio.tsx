@@ -1,107 +1,105 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  gradient: string;
-}
-
-const projects: Project[] = [
+const projects = [
   {
     title: "Success Talent",
-    description:
-      "Plateforme de recrutement innovante connectant talents et entreprises.",
-    tags: ["Site web", "UX/UI", "SEO"],
-    gradient: "from-violet-600 via-violet-700 to-violet-900",
+    category: "Plateforme web",
+    description: "Plateforme de recrutement avec espace candidat et entreprise, design premium et UX optimisée.",
+    tags: ["Next.js", "Design UI/UX", "Dashboard"],
+    gradient: "from-[#007ce2]/20 to-[#007ce2]/5",
   },
   {
     title: "Terra Sky",
-    description:
-      "Site vitrine immobilier premium avec visites virtuelles.",
-    tags: ["Landing page", "Branding"],
-    gradient: "from-blue-600 via-blue-700 to-blue-900",
+    category: "Site vitrine",
+    description: "Site immobilier avec visites virtuelles, recherche avancée et intégration CRM.",
+    tags: ["Site vitrine", "SEO", "Immobilier"],
+    gradient: "from-[#00ccaf]/20 to-[#00ccaf]/5",
   },
   {
     title: "City Smile",
-    description:
-      "Centre de blanchiment dentaire — optimisé conversion et SEO local.",
-    tags: ["Site web", "SEO", "Conversion"],
-    gradient: "from-emerald-600 via-emerald-700 to-emerald-900",
+    category: "E-Commerce",
+    description: "Centre de blanchiment dentaire — site SEO-optimisé avec réservation en ligne.",
+    tags: ["E-Commerce", "SEO", "Réservation"],
+    gradient: "from-[#e16540]/20 to-[#e16540]/5",
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative py-32 sm:py-40">
-      {/* Orb */}
-      <div className="orb orb-blue animate-float absolute right-0 top-1/2 h-[400px] w-[400px] opacity-20" />
+    <section id="portfolio" className="relative bg-[#070707] py-20">
+      <div className="line-h" />
+      <div className="line-glow" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mb-20 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500">
-            Réalisations
-          </span>
-          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Des projets qui{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-              parlent d&apos;eux-mêmes
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
-            Découvrez quelques-unes de nos réalisations récentes.
-          </p>
-        </div>
+      <div className="relative mx-auto flex max-w-[970px] px-6">
+        <div className="line-v hidden self-stretch md:block" />
 
-        {/* Projects */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.06]"
-            >
-              {/* Gradient mockup */}
+        <div className="flex-1 py-20">
+          {/* Header */}
+          <div className="mb-12 flex flex-col items-center gap-6 text-center">
+            <div className="glow-btn">
+              <span className="text-[15.25px] font-semibold tracking-[-0.2px] text-white">
+                Nos Réalisations
+              </span>
+            </div>
+
+            <h2 className="font-heading text-[36px] font-medium leading-[1.2] tracking-tight text-white sm:text-[44px]">
+              Des projets qui parlent d&apos;eux-mêmes.
+            </h2>
+
+            <p className="max-w-[600px] text-lg leading-relaxed text-[#abaaa8]">
+              Découvrez nos dernières réalisations et l&apos;impact concret que nous avons créé pour nos clients.
+            </p>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {projects.map((project, i) => (
               <div
-                className={`relative flex h-56 items-center justify-center bg-gradient-to-br ${project.gradient}`}
+                key={i}
+                className="group flex flex-col overflow-hidden rounded-3xl border border-[#242429] bg-[#131316] transition-all duration-300 hover:border-[#353638]"
               >
-                <div className="rounded-xl border border-white/[0.15] bg-white/[0.1] px-6 py-3 backdrop-blur-sm">
-                  <span className="text-lg font-bold text-white">
+                {/* Gradient mockup */}
+                <div className={`flex h-48 items-center justify-center bg-gradient-to-br ${project.gradient}`}>
+                  <span className="font-heading text-2xl font-medium text-white/60">
                     {project.title}
                   </span>
                 </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.2] bg-white/[0.1] px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm">
-                    Voir le projet
-                    <ExternalLink size={14} />
-                  </span>
-                </div>
-              </div>
 
-              {/* Info */}
-              <div className="p-6 sm:p-8">
-                <h3 className="text-lg font-bold text-white">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                  {project.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/[0.08] bg-white/[0.05] px-3 py-1 text-xs text-zinc-500"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#abaaa8]">
+                    {project.category}
+                  </span>
+                  <h3 className="font-heading text-lg font-medium text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[#abaaa8]">
+                    {project.description}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-3">
+                    {project.tags.map((tag, j) => (
+                      <span
+                        key={j}
+                        className="rounded-full border border-[#ffffff0f] bg-[#ffffff0f] px-3 py-1 text-xs text-[#abaaa8]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Voir le projet</span>
+                    <ArrowUpRight size={14} />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        <div className="line-v hidden self-stretch md:block" />
       </div>
+
+      <div className="line-h" />
+      <div className="line-glow-right" />
     </section>
   );
 }

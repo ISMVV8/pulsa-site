@@ -1,124 +1,122 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, ArrowRight } from "lucide-react";
+
+const avatars = ["M", "S", "T", "A", "L"];
 
 export default function CTA() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:contact@pulsacreatives.com?subject=Demande de devis - ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
+    const subject = encodeURIComponent(`Demande de devis — ${name}`);
+    const body = encodeURIComponent(
+      `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:contact@pulsacreatives.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="contact" className="relative py-32 sm:py-40">
-      {/* Orbs */}
-      <div className="orb orb-violet animate-float-slow absolute left-1/4 top-0 h-[500px] w-[500px] opacity-20" />
-      <div className="orb orb-blue animate-float absolute right-1/4 bottom-0 h-[400px] w-[400px] opacity-15" />
+    <section id="contact" className="relative bg-[#070707] py-20">
+      <div className="line-h" />
+      <div className="line-glow" />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6">
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Prêt à transformer votre{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-              présence digitale
-            </span>{" "}
-            ?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-            Discutons de votre projet. Premier appel stratégique offert.
-          </p>
-        </div>
+      <div className="relative mx-auto flex max-w-[970px] px-6">
+        <div className="line-v hidden self-stretch md:block" />
 
-        {/* Form card */}
-        <div className="rounded-3xl border border-white/[0.06] bg-white/[0.03] p-8 backdrop-blur-xl sm:p-10">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm text-zinc-500"
-                >
-                  Nom
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  placeholder="Votre nom"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none backdrop-blur-sm transition-all duration-200 focus:border-violet-500/50"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm text-zinc-500"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  placeholder="votre@email.com"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none backdrop-blur-sm transition-all duration-200 focus:border-violet-500/50"
-                />
+        <div className="flex-1 py-20">
+          {/* CTA Card */}
+          <div className="overflow-hidden rounded-3xl border-2 border-black bg-gradient-to-b from-[#3a3940] to-[#1f1e24] p-8 sm:p-12">
+            <div className="mx-auto flex max-w-[600px] flex-col items-center text-center">
+              <h2 className="font-heading text-[36px] font-medium leading-[1.2] tracking-tight text-white sm:text-[44px]">
+                Prêt à transformer votre présence digitale ?
+              </h2>
+
+              <p className="mt-4 text-lg leading-relaxed text-[#abaaa8]">
+                Demandez votre devis gratuit et recevez une proposition sur mesure sous 24h.
+              </p>
+
+              {/* Social proof */}
+              <div className="mt-6 flex items-center gap-4 rounded-full border border-[#ffffff0f] bg-[#ffffff0f] px-5 py-3 backdrop-blur-[5px]">
+                <div className="flex">
+                  {avatars.map((initial, i) => (
+                    <div
+                      key={i}
+                      className={`flex h-[36px] w-[36px] items-center justify-center rounded-full border border-[#ffffff40] bg-gradient-to-b from-[#3a3940] to-[#1f1e24] text-xs font-medium text-white shadow-[0_2px_5px_#0003] ${i > 0 ? "-ml-3" : ""}`}
+                    >
+                      {initial}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#facc15">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-white">+50 clients</span>
               </div>
             </div>
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-sm text-zinc-500"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
+
+            {/* Contact Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto mt-10 flex max-w-[500px] flex-col gap-4"
+            >
+              <input
+                type="text"
+                placeholder="Votre nom"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
-                rows={4}
-                placeholder="Décrivez votre projet..."
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none backdrop-blur-sm transition-all duration-200 focus:border-violet-500/50"
+                className="rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#abaaa8] outline-none transition-colors focus:border-[#ffffff26]"
               />
-            </div>
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-white py-3.5 text-sm font-semibold text-black transition-colors duration-200 hover:bg-zinc-200"
-            >
-              <Send size={16} />
-              Envoyer ma demande
-            </button>
-          </form>
+              <input
+                type="email"
+                placeholder="Votre email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#abaaa8] outline-none transition-colors focus:border-[#ffffff26]"
+              />
+              <textarea
+                placeholder="Décrivez votre projet..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows={4}
+                required
+                className="resize-none rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#abaaa8] outline-none transition-colors focus:border-[#ffffff26]"
+              />
+              <button
+                type="submit"
+                className="btn-cta flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-base font-medium text-[#131316]"
+              >
+                <Send size={16} />
+                <span>Envoyer ma demande</span>
+              </button>
+            </form>
 
-          <p className="mt-6 text-center text-xs text-zinc-600">
-            Ou écrivez-nous directement à{" "}
-            <a
-              href="mailto:contact@pulsacreatives.com"
-              className="text-zinc-400 transition-colors hover:text-white"
-            >
-              contact@pulsacreatives.com
-            </a>
-          </p>
+            <p className="mt-4 text-center text-xs text-[#abaaa8]">
+              Ou contactez-nous directement :{" "}
+              <a
+                href="mailto:contact@pulsacreatives.com"
+                className="text-white underline"
+              >
+                contact@pulsacreatives.com
+              </a>
+            </p>
+          </div>
         </div>
+
+        <div className="line-v hidden self-stretch md:block" />
       </div>
+
+      <div className="line-h" />
+      <div className="line-glow-right" />
     </section>
   );
 }
