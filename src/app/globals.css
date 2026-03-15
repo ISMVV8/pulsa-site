@@ -151,7 +151,7 @@ body {
   position: absolute;
   inset: 1px;
   border-radius: 9999px;
-  background-color: #070707;
+  background-color: #1a1a2e;
 }
 
 .glow-btn > * {
