@@ -1,72 +1,85 @@
-import { Check, ArrowRight, Star } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 interface Plan {
   name: string;
   price: string;
+  priceLabel: string;
   description: string;
   features: string[];
   popular?: boolean;
+  cta: string;
 }
 
 const plans: Plan[] = [
   {
     name: "Starter",
     price: "499€",
+    priceLabel: "À partir de",
     description: "Landing page ou site one-page",
     features: [
-      "Design sur mesure",
-      "Responsive mobile",
-      "Formulaire de contact",
-      "Hébergement 1 an inclus",
-      "Livraison en 7 jours",
+      "Design personnalisé",
+      "Responsive",
+      "SEO de base",
+      "Livraison 7 jours",
+      "1 révision incluse",
     ],
+    cta: "Choisir Starter",
   },
   {
     name: "Business",
     price: "1 499€",
-    description: "Site vitrine multi-pages + SEO de base",
+    priceLabel: "À partir de",
+    description: "Site vitrine multi-pages + SEO",
     features: [
       "Jusqu'à 5 pages",
       "Design premium",
-      "SEO de base",
-      "Animations modernes",
+      "SEO complet",
       "Blog intégré",
-      "Support 3 mois",
+      "3 révisions",
+      "Support 30 jours",
     ],
     popular: true,
+    cta: "Choisir Business",
   },
   {
     name: "Premium",
     price: "Sur devis",
-    description: "Projet sur mesure, e-commerce, solution complexe",
+    priceLabel: "Projet sur mesure",
+    description: "Solution complète et personnalisée",
     features: [
       "Pages illimitées",
-      "E-commerce complet",
+      "E-commerce",
+      "Fonctionnalités sur mesure",
       "SEO avancé",
-      "Intégrations sur mesure",
-      "Gestion Ads incluse",
-      "Support prioritaire",
+      "Branding complet",
+      "Support 6 mois",
     ],
+    cta: "Demander un devis",
   },
 ];
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-24 sm:py-32">
+    <section id="pricing" className="relative py-32 sm:py-40">
       {/* Orbs */}
-      <div className="orb orb-violet animate-float absolute -right-32 top-20 h-[300px] w-[300px] opacity-25" />
-      <div className="orb orb-cyan animate-float-slower absolute -left-20 bottom-20 h-[250px] w-[250px] opacity-20" />
+      <div className="orb orb-violet animate-float absolute -right-40 top-20 h-[400px] w-[400px] opacity-20" />
+      <div className="orb orb-emerald animate-float-slower absolute -left-20 bottom-20 h-[300px] w-[300px] opacity-15" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <span className="glass-badge mb-4 inline-block">Tarifs</span>
-          <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <div className="mb-20 text-center">
+          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Tarifs
+          </span>
+          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
             Des formules{" "}
-            <span className="gradient-text">adaptées à vos ambitions</span>
+            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+              adaptées à vos ambitions
+            </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[#9ca3af]">
-            Choisissez la formule qui correspond à votre projet. Tous nos tarifs incluent un design premium.
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+            Choisissez la formule qui correspond à votre projet. Tous nos tarifs
+            incluent un design premium.
           </p>
         </div>
 
@@ -75,35 +88,40 @@ export default function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`glass glass-hover relative rounded-2xl p-8 ${
-                plan.popular ? "border-[#7c3aed]/50 glow-accent" : ""
+              className={`relative rounded-2xl border bg-white/[0.03] p-8 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.06] sm:p-10 ${
+                plan.popular
+                  ? "border-violet-500/40 shadow-[0_0_60px_-15px_rgba(139,92,246,0.3)]"
+                  : "border-white/[0.06] hover:border-white/[0.1]"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#3b82f6] px-4 py-1 text-xs font-semibold text-white">
-                    <Star size={12} />
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-blue-500 px-4 py-1 text-xs font-semibold text-white">
                     Le plus populaire
                   </span>
                 </div>
               )}
 
-              <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold">
-                {plan.name}
-              </h3>
-              <p className="mt-1 text-sm text-[#9ca3af]">{plan.description}</p>
+              <h3 className="text-xl font-bold text-white">{plan.name}</h3>
+              <p className="mt-1 text-sm text-zinc-500">{plan.description}</p>
 
-              <div className="mt-6 mb-6">
-                <span className="text-sm text-[#9ca3af]">À partir de</span>
-                <div className="font-[family-name:var(--font-space-grotesk)] text-4xl font-bold gradient-text">
+              <div className="mt-6 mb-8">
+                <span className="text-xs text-zinc-500">{plan.priceLabel}</span>
+                <div className="mt-1 text-4xl font-bold text-white">
                   {plan.price}
                 </div>
               </div>
 
               <ul className="mb-8 space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm text-[#9ca3af]">
-                    <Check size={16} className="shrink-0 text-[#7c3aed]" />
+                  <li
+                    key={feature}
+                    className="flex items-center gap-3 text-sm text-zinc-400"
+                  >
+                    <Check
+                      size={16}
+                      className="shrink-0 text-violet-400"
+                    />
                     {feature}
                   </li>
                 ))}
@@ -111,11 +129,13 @@ export default function Pricing() {
 
               <a
                 href="#contact"
-                className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold text-white ${
-                  plan.popular ? "btn-gradient" : "btn-glass"
+                className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all duration-200 ${
+                  plan.popular
+                    ? "bg-white text-black hover:bg-zinc-200"
+                    : "border border-white/[0.1] bg-white/[0.03] text-white hover:border-white/[0.2] hover:bg-white/[0.06]"
                 }`}
               >
-                Demander un devis
+                {plan.cta}
                 <ArrowRight size={16} />
               </a>
             </div>
@@ -123,17 +143,16 @@ export default function Pricing() {
         </div>
 
         {/* Banner */}
-        <div className="glass mt-12 rounded-2xl p-8 text-center">
-          <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold sm:text-2xl">
-            Projet spécial ?{" "}
-            <span className="gradient-text">Demandez un devis personnalisé</span>
+        <div className="mt-16 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 text-center backdrop-blur-xl sm:p-10">
+          <h3 className="text-xl font-bold sm:text-2xl">
+            Chaque projet est unique.{" "}
+            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+              Contactez-nous pour un devis personnalisé.
+            </span>
           </h3>
-          <p className="mt-2 text-[#9ca3af]">
-            Chaque projet est unique. Discutons de vos besoins pour une solution sur mesure.
-          </p>
           <a
             href="#contact"
-            className="btn-gradient mt-6 inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold text-white"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-colors duration-200 hover:bg-zinc-200"
           >
             Nous contacter
             <ArrowRight size={16} />

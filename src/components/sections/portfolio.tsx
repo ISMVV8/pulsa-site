@@ -10,39 +10,46 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Success Talent",
-    description: "Plateforme de recrutement moderne connectant talents et entreprises à Bruxelles.",
-    tags: ["Site web", "Design", "SEO"],
-    gradient: "from-[#7c3aed] via-[#6d28d9] to-[#4c1d95]",
+    description:
+      "Plateforme de recrutement innovante connectant talents et entreprises.",
+    tags: ["Site web", "UX/UI", "SEO"],
+    gradient: "from-violet-600 via-violet-700 to-violet-900",
   },
   {
     title: "Terra Sky",
-    description: "Site vitrine immobilier premium avec visites virtuelles et prise de rendez-vous.",
+    description:
+      "Site vitrine immobilier premium avec visites virtuelles.",
     tags: ["Landing page", "Branding"],
-    gradient: "from-[#3b82f6] via-[#2563eb] to-[#1e40af]",
+    gradient: "from-blue-600 via-blue-700 to-blue-900",
   },
   {
     title: "City Smile",
-    description: "Site de blanchiment dentaire optimisé pour la conversion et le référencement local.",
+    description:
+      "Centre de blanchiment dentaire — optimisé conversion et SEO local.",
     tags: ["Site web", "SEO", "Conversion"],
-    gradient: "from-[#06b6d4] via-[#0891b2] to-[#0e7490]",
+    gradient: "from-emerald-600 via-emerald-700 to-emerald-900",
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative py-24 sm:py-32">
+    <section id="portfolio" className="relative py-32 sm:py-40">
       {/* Orb */}
-      <div className="orb orb-blue animate-float absolute right-0 top-1/2 h-[300px] w-[300px] opacity-20" />
+      <div className="orb orb-blue animate-float absolute right-0 top-1/2 h-[400px] w-[400px] opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <span className="glass-badge mb-4 inline-block">Portfolio</span>
-          <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <div className="mb-20 text-center">
+          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Réalisations
+          </span>
+          <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
             Des projets qui{" "}
-            <span className="gradient-text">parlent d&apos;eux-mêmes</span>
+            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+              parlent d&apos;eux-mêmes
+            </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[#9ca3af]">
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
             Découvrez quelques-unes de nos réalisations récentes.
           </p>
         </div>
@@ -52,20 +59,20 @@ export default function Portfolio() {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="glass glass-hover group cursor-pointer overflow-hidden rounded-2xl"
+              className="group cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-white/[0.1] hover:bg-white/[0.06]"
             >
               {/* Gradient mockup */}
               <div
                 className={`relative flex h-56 items-center justify-center bg-gradient-to-br ${project.gradient}`}
               >
-                <div className="glass rounded-lg px-6 py-3">
-                  <span className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-white">
+                <div className="rounded-xl border border-white/[0.15] bg-white/[0.1] px-6 py-3 backdrop-blur-sm">
+                  <span className="text-lg font-bold text-white">
                     {project.title}
                   </span>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
-                  <span className="btn-glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.2] bg-white/[0.1] px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm">
                     Voir le projet
                     <ExternalLink size={14} />
                   </span>
@@ -73,18 +80,18 @@ export default function Portfolio() {
               </div>
 
               {/* Info */}
-              <div className="p-6">
-                <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-lg font-bold text-white">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9ca3af]">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
                   {project.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="glass-badge text-xs"
+                      className="rounded-full border border-white/[0.08] bg-white/[0.05] px-3 py-1 text-xs text-zinc-500"
                     >
                       {tag}
                     </span>
