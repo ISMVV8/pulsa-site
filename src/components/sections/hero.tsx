@@ -21,14 +21,37 @@ const listingItems = [
 export default function Hero() {
   return (
     <section className="relative bg-[#0a0a0a]" style={{ paddingTop: "72px" }}>
-      {/* Background glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 35%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 35%, transparent 70%)",
-        }}
-      />
+      {/* Background — multi-layer gradient like 8lab */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Main center vignette — subtle lift from pure black */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,255,255,0.04) 0%, transparent 60%)",
+          }}
+        />
+        {/* Bottom left teal glow */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 40% 40% at 10% 100%, rgba(0,180,200,0.04) 0%, transparent 60%)",
+          }}
+        />
+        {/* Bottom right blue glow */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 40% 40% at 90% 100%, rgba(59,130,246,0.03) 0%, transparent 60%)",
+          }}
+        />
+        {/* Top edge — very subtle lighter band like 8lab */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, rgba(255,255,255,0.015) 0%, transparent 20%)",
+          }}
+        />
+      </div>
 
       {/* Decorative horizontal lines under nav */}
       <div className="line-sweep h-px w-full bg-[#ffffff0f]">
