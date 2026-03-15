@@ -130,15 +130,15 @@ body {
   display: inline-flex;
   position: relative;
   border-radius: 9999px;
-  padding: 1px;
+  overflow: hidden;
 }
 
-.badge-8lab-glow {
+.badge-8lab::before {
+  content: "";
   position: absolute;
-  inset: -1px;
-  border-radius: 9999px;
-  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.4), transparent 30%);
-  animation: spin 4s linear infinite;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 25%, rgba(255, 255, 255, 0.5) 30%, transparent 35%, transparent 100%);
+  animation: spin 3s linear infinite;
 }
 
 .badge-8lab-inner {
@@ -148,7 +148,7 @@ body {
   align-items: center;
   border-radius: 9999px;
   background-color: #111118;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 1px;
   padding: 8px 20px;
 }
 

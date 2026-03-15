@@ -73,7 +73,6 @@ export default function Hero() {
           <div className="px-4 pb-14 pt-14 text-center sm:px-8 lg:pt-16">
             {/* Badge with rotating glow border like 8lab */}
             <div className="badge-8lab">
-              <div className="badge-8lab-glow" />
               <div className="badge-8lab-inner">
                 <span className="text-[13px] font-semibold text-white">
                   Pulsa Creatives : Agence Digitale
