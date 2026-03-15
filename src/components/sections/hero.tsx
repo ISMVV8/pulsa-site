@@ -119,8 +119,8 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Social proof — horizontal layout like 8lab */}
-            <div className="mt-8 flex items-center justify-center gap-5">
+            {/* Social proof — same width as CTA button */}
+            <div className="mx-auto mt-6 flex w-fit items-center justify-center gap-3">
               {/* Stacked avatars */}
               <div className="flex">
                 {[
@@ -132,15 +132,15 @@ export default function Hero() {
                 ].map((src, i) => (
                   <div
                     key={i}
-                    className="relative h-[41px] w-[41px] overflow-hidden rounded-full border border-[#ffffff40] shadow-[0_2px_5px_#0003]"
-                    style={{ marginLeft: i > 0 ? "-14px" : 0, zIndex: 5 - i }}
+                    className="relative h-[32px] w-[32px] overflow-hidden rounded-full border border-[#ffffff40] shadow-[0_2px_5px_#0003]"
+                    style={{ marginLeft: i > 0 ? "-10px" : 0, zIndex: 5 - i }}
                   >
                     <Image
                       src={src}
                       alt="Client"
                       fill
                       className="object-cover"
-                      sizes="41px"
+                      sizes="32px"
                     />
                   </div>
                 ))}
@@ -151,7 +151,7 @@ export default function Hero() {
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className="h-[20px] w-[20px] text-[#22c55e]"
+                    className="h-[16px] w-[16px] text-[#22c55e]"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -161,7 +161,7 @@ export default function Hero() {
               </div>
 
               {/* Text */}
-              <span className="text-[14px] text-white">
+              <span className="text-[13px] text-white">
                 +50 clients satisfaits
               </span>
             </div>
