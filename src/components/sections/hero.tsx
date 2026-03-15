@@ -47,26 +47,26 @@ export default function Hero() {
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
-          <div className="px-4 pb-20 pt-24 text-center sm:px-8 lg:pt-28">
+          <div className="px-4 pb-20 pt-20 text-center sm:px-8 lg:pt-24">
             {/* Badge with rotating glow border like 8lab */}
             <div className="glow-btn">
-              <span className="text-[15.25px] font-semibold tracking-[-0.2px] text-[#afb0b9]">
+              <span className="text-[15px] font-semibold tracking-[-0.2px] text-[#afb0b9]">
                 Pulsa Creatives : Agence Digitale
               </span>
             </div>
 
-            {/* Main heading — same size as 8lab (56px) */}
-            <h1 className="mx-auto mt-10 max-w-[820px] font-[family-name:var(--font-heading)] text-[32px] font-medium leading-[1.2] tracking-[-0.5px] text-white sm:text-[44px] lg:text-[56px]">
+            {/* Main heading — 64px like 8lab, semibold, tight tracking */}
+            <h1 className="mx-auto mt-8 max-w-[820px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[64px]">
               Le digital{" "}
-              <span className="text-[#5e5f6e]">qui fait</span>{" "}
+              <span className="font-medium text-[#5e5f6e]">qui fait</span>{" "}
               la différence{" "}
-              <span className="text-[#5e5f6e]">pour votre</span>{" "}
+              <span className="font-medium text-[#5e5f6e]">pour votre</span>{" "}
               business
             </h1>
 
             {/* Subtitle — with bold white + gray like 8lab */}
-            <p className="mx-auto mt-7 max-w-[620px] text-[16px] leading-[1.7] tracking-[-0.2px] text-[#abaaa8]">
-              <span className="font-semibold text-white">
+            <p className="mx-auto mt-6 max-w-[640px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
+              <span className="font-bold text-white">
                 Pulsa Creatives vous accompagne de A à Z,
               </span>{" "}
               du design à la mise en ligne, pour créer une présence digitale qui
