@@ -20,7 +20,7 @@ const listingItems = [
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#0a0a0a]" style={{ paddingTop: "72px" }}>
+    <section className="relative min-h-screen bg-[#0a0a0a]" style={{ paddingTop: "72px" }}>
       {/* Background — multi-layer gradient like 8lab */}
       <div className="pointer-events-none absolute inset-0">
         {/* Main center vignette — subtle lift from pure black */}
@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
-          <div className="px-4 pb-14 pt-14 text-center sm:px-8 lg:pt-16">
+          <div className="px-4 pb-20 pt-20 text-center sm:px-8 lg:pt-28">
             {/* Badge with rotating glow border like 8lab */}
             <div className="badge-8lab">
               <div className="badge-8lab-inner">
