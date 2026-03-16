@@ -36,9 +36,10 @@ export async function POST(req: NextRequest) {
         email,
         phone: phone || null,
         company: company || null,
-        source: "website",
+        source: "other",
         status: "lead",
         notes: [
+          "Source: Site web pulsacreatives.com",
           service ? `Service: ${service}` : "",
           budget ? `Budget: ${budget}` : "",
           `Message: ${message}`,
