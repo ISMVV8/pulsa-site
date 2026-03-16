@@ -18,70 +18,72 @@ const listingItems = [
   { icon: Megaphone, label: "Gestion Ads" },
 ];
 
+const stats = [
+  { label: "Projets livrés", value: "50+" },
+  { label: "Satisfaction", value: "4.9/5" },
+  { label: "Délai moyen", value: "7j" },
+  { label: "Sur mesure", value: "100%" },
+];
+
+const avatars = [
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80",
+];
+
+/* ─── Reusable line components ─── */
+function HLine({ delay = "0s" }: { delay?: string }) {
+  return (
+    <div className="line-sweep relative h-px w-full bg-[#ffffff0f]" style={{ animationDelay: delay }}>
+      <div className="absolute left-0 top-0 h-px w-[60px] bg-gradient-to-r from-[#ffffff30] to-transparent" />
+      <div className="absolute right-0 top-0 h-px w-[60px] bg-gradient-to-l from-[#ffffff30] to-transparent" />
+    </div>
+  );
+}
+
+function VLines({ delayL = "0s", delayR = "3s" }: { delayL?: string; delayR?: string }) {
+  return (
+    <>
+      <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: delayL }} />
+      <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: delayR }} />
+    </>
+  );
+}
+
+/* ─── Hero Section ─── */
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-[#0a0a0a]" style={{ paddingTop: "72px" }}>
-      {/* Background — multi-layer gradient like 8lab */}
+    <section className="relative min-h-screen bg-[#070707]" style={{ paddingTop: "73px" }}>
+      {/* ── Background glows ── */}
       <div className="pointer-events-none absolute inset-0">
-        {/* Main center vignette — subtle lift from pure black */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,255,255,0.04) 0%, transparent 60%)",
-          }}
-        />
-        {/* Bottom left teal glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 40% 40% at 10% 100%, rgba(0,180,200,0.04) 0%, transparent 60%)",
-          }}
-        />
-        {/* Bottom right blue glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 40% 40% at 90% 100%, rgba(59,130,246,0.03) 0%, transparent 60%)",
-          }}
-        />
-        {/* Top edge — very subtle lighter band like 8lab */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, rgba(255,255,255,0.015) 0%, transparent 20%)",
-          }}
-        />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 55% at 50% 28%, rgba(255,255,255,0.035) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 35% 35% at 8% 95%, rgba(0,180,200,0.035) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 35% 35% at 92% 95%, rgba(59,130,246,0.025) 0%, transparent 55%)" }} />
       </div>
 
-      {/* Decorative horizontal lines under nav */}
-      <div className="line-sweep h-px w-full bg-[#ffffff0f]">
-        <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
-      </div>
+      {/* ── 1. Top separator ── */}
+      <HLine />
 
-      {/* Main content area */}
-      <div className="mx-auto max-w-[1200px] px-6">
+      {/* ── 2. Hero content ── */}
+      <div className="mx-auto max-w-[1100px] px-5">
         <div className="relative">
-          {/* Vertical lines with sweep animation */}
-          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]">
-            <div className="absolute left-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
-          </div>
-          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "3s" }}>
-            <div className="absolute right-0 top-0 h-[80px] w-px bg-gradient-to-b from-[#ffffff40] to-transparent" />
-          </div>
+          <VLines />
 
-          {/* Hero inner — generous padding like 8lab */}
-          <div className="px-8 pb-28 pt-28 text-center sm:px-16 lg:pt-36">
-            {/* Badge with rotating glow border like 8lab */}
+          <div className="flex min-h-[calc(100vh-73px-48px-80px-100px)] flex-col items-center justify-center px-6 py-16 text-center sm:px-12 lg:py-24">
+
+            {/* Badge */}
             <div className="badge-8lab">
               <div className="badge-8lab-inner">
-                <span className="text-[13px] font-semibold text-white">
+                <span className="text-[12px] font-semibold tracking-wide text-white sm:text-[13px]">
                   Pulsa Creatives : Agence Digitale
                 </span>
               </div>
             </div>
 
-            {/* Main heading — 64px like 8lab, semibold, tight tracking */}
-            <h1 className="mx-auto mt-8 max-w-[900px] font-[family-name:var(--font-heading)] text-[36px] font-semibold leading-[1.15] tracking-[-1.5px] text-white sm:text-[50px] lg:text-[60px]">
+            {/* Title */}
+            <h1 className="mx-auto mt-7 max-w-[850px] font-[family-name:var(--font-heading)] text-[34px] font-semibold leading-[1.12] tracking-[-1.5px] text-white sm:mt-8 sm:text-[48px] lg:text-[58px]">
               Le digital{" "}
               <span className="font-medium text-[#5e5f6e]">qui fait</span>{" "}
               la différence{" "}
@@ -89,8 +91,8 @@ export default function Hero() {
               business
             </h1>
 
-            {/* Subtitle — with bold white + gray like 8lab */}
-            <p className="mx-auto mt-8 max-w-[700px] text-[17px] leading-[1.6] tracking-[-0.2px] text-[#5e5f6e]">
+            {/* Subtitle */}
+            <p className="mx-auto mt-6 max-w-[580px] text-[15px] leading-[1.65] text-[#5e5f6e] sm:mt-7 sm:text-[17px]">
               <span className="font-bold text-white">
                 Pulsa Creatives vous accompagne de A à Z,
               </span>{" "}
@@ -98,124 +100,77 @@ export default function Hero() {
               convertit vraiment.
             </p>
 
-            {/* CTA Button — white like 8lab */}
-            <div className="mt-12">
+            {/* CTA */}
+            <div className="mt-9 sm:mt-10">
               <Link
-                href="#contact"
-                className="group inline-flex items-center gap-3 rounded-full border border-[#e0e0e0] bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975]"
+                href="/contact"
+                className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-black shadow-[0_0_20px_rgba(255,255,255,0.08)] transition-all duration-300 hover:scale-[0.975] hover:shadow-[0_0_30px_rgba(255,255,255,0.12)]"
               >
                 <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e] pulse-green" />
                 Demander un devis
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  className="transition-transform group-hover:translate-x-0.5"
-                >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="transition-transform group-hover:translate-x-0.5">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </Link>
             </div>
 
-            {/* Social proof — avatars left, stars+text stacked right */}
-            <div className="mx-auto mt-6 flex w-fit items-center gap-4">
-              {/* Stacked avatars */}
+            {/* Social proof */}
+            <div className="mt-7 flex items-center gap-4">
               <div className="flex">
-                {[
-                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80",
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
-                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
-                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
-                  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80",
-                ].map((src, i) => (
+                {avatars.map((src, i) => (
                   <div
                     key={i}
-                    className="relative h-[40px] w-[40px] overflow-hidden rounded-full border-2 border-[#ffffff40] shadow-[0_2px_5px_#0003]"
-                    style={{ marginLeft: i > 0 ? "-14px" : 0, zIndex: 5 - i }}
+                    className="relative h-[36px] w-[36px] overflow-hidden rounded-full border-2 border-[#ffffff30] sm:h-[40px] sm:w-[40px]"
+                    style={{ marginLeft: i > 0 ? "-12px" : 0, zIndex: 5 - i }}
                   >
-                    <Image
-                      src={src}
-                      alt="Client"
-                      fill
-                      className="object-cover"
-                      sizes="40px"
-                    />
+                    <Image src={src} alt="" fill className="object-cover" sizes="40px" />
                   </div>
                 ))}
               </div>
-
-              {/* Stars + text stacked */}
               <div className="flex flex-col items-start gap-0.5">
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="h-[18px] w-[18px] text-[#22c55e]"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                    <svg key={i} className="h-[16px] w-[16px] text-[#22c55e]" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <span className="text-[14px] font-medium text-white">
-                  +50 clients satisfaits
-                </span>
+                <span className="text-[13px] font-medium text-white">+50 clients satisfaits</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Horizontal line with glow + sweep */}
-      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "2s" }}>
-        <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
-        <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
-      </div>
+      {/* ── 3. Listing bar ── */}
+      <HLine delay="2s" />
 
-      {/* Listing bar */}
-      <div className="mx-auto max-w-[970px] px-6">
+      <div className="mx-auto max-w-[970px] px-5">
         <div className="relative">
-          {/* Vertical lines */}
-          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
-          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "4s" }} />
+          <VLines delayL="1s" delayR="4s" />
 
-          {/* Desktop: 6-col grid / Mobile: auto-scrolling marquee */}
+          {/* Desktop */}
           <div className="hidden sm:grid sm:grid-cols-6">
             {listingItems.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div
-                  key={item.label}
-                  className={`flex items-center justify-center gap-2.5 py-5 ${
-                    i < listingItems.length - 1
-                      ? "border-r border-[#ffffff0f]"
-                      : ""
-                  }`}
-                >
-                  <Icon className="h-[18px] w-[18px] text-[#5e5f6e]" strokeWidth={1.5} />
+                <div key={item.label} className={`flex items-center justify-center gap-2 py-5 ${i < 5 ? "border-r border-[#ffffff0f]" : ""}`}>
+                  <Icon className="h-[17px] w-[17px] text-[#5e5f6e]" strokeWidth={1.5} />
                   <span className="text-[14px] font-light text-white">{item.label}</span>
                 </div>
               );
             })}
           </div>
+
+          {/* Mobile marquee */}
           <div className="overflow-hidden sm:hidden">
             <div className="animate-marquee flex w-max">
               {[...listingItems, ...listingItems].map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <div
-                    key={i}
-                    className="flex flex-shrink-0 items-center gap-2 border-r border-[#ffffff0f] px-6 py-4"
-                  >
-                    <Icon className="h-[16px] w-[16px] text-[#5e5f6e]" strokeWidth={1.5} />
-                    <span className="whitespace-nowrap text-[13px] font-light text-white">
-                      {item.label}
-                    </span>
+                  <div key={i} className="flex flex-shrink-0 items-center gap-2 border-r border-[#ffffff0f] px-5 py-3.5">
+                    <Icon className="h-[15px] w-[15px] text-[#5e5f6e]" strokeWidth={1.5} />
+                    <span className="whitespace-nowrap text-[13px] font-light text-white">{item.label}</span>
                   </div>
                 );
               })}
@@ -224,48 +179,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Horizontal line with glow + sweep */}
-      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "4s" }}>
-        <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
-        <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
-      </div>
+      {/* ── 4. Stats bar ── */}
+      <HLine delay="3.5s" />
 
-      {/* Stats section */}
-      <div className="mx-auto max-w-[970px] px-6">
+      <div className="mx-auto max-w-[970px] px-5">
         <div className="relative">
-          <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "2s" }} />
-          <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "5s" }} />
+          <VLines delayL="2.5s" delayR="5s" />
 
           <div className="grid grid-cols-4">
-            {[
-              { label: "Projets livrés", value: "50+" },
-              { label: "Satisfaction", value: "4.9/5" },
-              { label: "Délai moyen", value: "7j" },
-              { label: "Sur mesure", value: "100%" },
-            ].map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`flex h-[70px] flex-col items-center justify-center gap-1 sm:h-[130px] sm:gap-3 ${
-                  i < 3 ? "border-r border-[#ffffff0f]" : ""
-                }`}
-              >
-                <span className="text-[10px] text-[#abaaa8] sm:text-[14px]">
-                  {stat.label}
-                </span>
-                <span className="font-[family-name:var(--font-heading)] text-[18px] font-medium leading-none text-white sm:text-[32px]">
-                  {stat.value}
-                </span>
+            {stats.map((stat, i) => (
+              <div key={stat.label} className={`flex flex-col items-center justify-center gap-1 py-5 sm:h-[120px] sm:gap-2.5 ${i < 3 ? "border-r border-[#ffffff0f]" : ""}`}>
+                <span className="text-[9px] uppercase tracking-wider text-[#5e5f6e] sm:text-[12px]">{stat.label}</span>
+                <span className="font-[family-name:var(--font-heading)] text-[18px] font-medium leading-none text-white sm:text-[30px]">{stat.value}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom line */}
-      <div className="line-sweep h-px w-full bg-[#ffffff0f]" style={{ animationDelay: "5s" }}>
-        <div className="absolute left-0 top-0 h-px w-[80px] bg-gradient-to-r from-[#ffffff40] to-transparent" />
-        <div className="absolute right-0 top-0 h-px w-[80px] bg-gradient-to-l from-[#ffffff40] to-transparent" />
-      </div>
+      {/* ── 5. Bottom line ── */}
+      <HLine delay="5s" />
     </section>
   );
 }
