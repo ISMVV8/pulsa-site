@@ -184,28 +184,42 @@ export default function Hero() {
           <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
           <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "4s" }} />
 
-          <div className="flex overflow-x-auto sm:grid sm:grid-cols-6 sm:overflow-visible">
+          {/* Desktop: 6-col grid / Mobile: auto-scrolling marquee */}
+          <div className="hidden sm:grid sm:grid-cols-6">
             {listingItems.map((item, i) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.label}
-                  className={`flex flex-shrink-0 items-center justify-center gap-2 px-5 py-4 sm:px-0 sm:py-5 ${
+                  className={`flex items-center justify-center gap-2.5 py-5 ${
                     i < listingItems.length - 1
                       ? "border-r border-[#ffffff0f]"
                       : ""
                   }`}
                 >
-                  <Icon
-                    className="h-[16px] w-[16px] text-[#5e5f6e] sm:h-[18px] sm:w-[18px]"
-                    strokeWidth={1.5}
-                  />
-                  <span className="whitespace-nowrap text-[13px] font-light text-white sm:text-[14px]">
-                    {item.label}
-                  </span>
+                  <Icon className="h-[18px] w-[18px] text-[#5e5f6e]" strokeWidth={1.5} />
+                  <span className="text-[14px] font-light text-white">{item.label}</span>
                 </div>
               );
             })}
+          </div>
+          <div className="overflow-hidden sm:hidden">
+            <div className="animate-marquee flex w-max">
+              {[...listingItems, ...listingItems].map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={i}
+                    className="flex flex-shrink-0 items-center gap-2 border-r border-[#ffffff0f] px-6 py-4"
+                  >
+                    <Icon className="h-[16px] w-[16px] text-[#5e5f6e]" strokeWidth={1.5} />
+                    <span className="whitespace-nowrap text-[13px] font-light text-white">
+                      {item.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
