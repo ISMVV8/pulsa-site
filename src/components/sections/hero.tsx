@@ -59,7 +59,7 @@ export default function Hero() {
       </div>
 
       {/* Main content area */}
-      <div className="mx-auto max-w-[970px] px-6">
+      <div className="mx-auto max-w-[1200px] px-6">
         <div className="relative">
           {/* Vertical lines with sweep animation */}
           <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]">
