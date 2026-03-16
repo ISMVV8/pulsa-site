@@ -21,10 +21,10 @@ export default function Header() {
         {/* Nav links */}
         <nav className="hidden items-center gap-10 md:flex">
           {[
-            { label: "Services", href: "#services" },
-            { label: "Processus", href: "#processus" },
-            { label: "Réalisations", href: "#realisations" },
-            { label: "Tarifs", href: "#tarifs" },
+            { label: "Services", href: "/#services" },
+            { label: "Portfolio", href: "/portfolio" },
+            { label: "Tarifs", href: "/#tarifs" },
+            { label: "Contact", href: "/contact" },
           ].map((item) => (
             <Link
               key={item.label}
@@ -38,7 +38,7 @@ export default function Header() {
 
         {/* CTA */}
         <Link
-          href="#contact"
+          href="/contact"
           className="hidden rounded-full border border-[#ffffff17] bg-gradient-to-b from-[#161722] to-transparent px-5 py-2.5 text-[15.25px] font-light text-white transition-all duration-350 hover:scale-95 hover:bg-[#212126] md:block"
         >
           Demander un devis
@@ -66,18 +66,23 @@ export default function Header() {
       {mobileOpen && (
         <div className="bg-[#070707] px-6 pb-6 pt-4 md:hidden">
           <nav className="flex flex-col gap-4">
-            {["Services", "Processus", "Réalisations", "Tarifs"].map((item) => (
+            {[
+              { label: "Services", href: "/#services" },
+              { label: "Portfolio", href: "/portfolio" },
+              { label: "Tarifs", href: "/#tarifs" },
+              { label: "Contact", href: "/contact" },
+            ].map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-[15px] text-[#afb0b9]"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
             <Link
-              href="#contact"
+              href="/contact"
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-full border border-[#ffffff17] px-5 py-3 text-center text-[15px] text-white"
             >
