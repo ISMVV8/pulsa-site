@@ -53,7 +53,7 @@ export default function Pricing() {
       <div className="relative mx-auto flex max-w-[970px] px-6">
         <div className="line-v hidden self-stretch md:block" />
 
-        <div className="flex-1 py-20">
+        <div className="flex-1 px-4 py-20 sm:px-10">
           {/* Header */}
           <div className="mb-12 flex flex-col items-center gap-6 text-center">
             <div className="glow-btn">

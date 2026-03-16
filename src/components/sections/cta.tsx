@@ -27,7 +27,7 @@ export default function CTA() {
       <div className="relative mx-auto flex max-w-[970px] px-6">
         <div className="line-v hidden self-stretch md:block" />
 
-        <div className="flex-1 py-20">
+        <div className="flex-1 px-4 py-20 sm:px-10">
           {/* CTA Card */}
           <div className="overflow-hidden rounded-3xl border-2 border-black bg-gradient-to-b from-[#3a3940] to-[#1f1e24] p-8 sm:p-12">
             <div className="mx-auto flex max-w-[600px] flex-col items-center text-center">

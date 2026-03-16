@@ -147,7 +147,7 @@ export default function PortfolioPage() {
             <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
             <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "5s" }} />
 
-            <div className="py-20">
+            <div className="px-4 py-20 sm:px-10">
               {projects.map((project, i) => (
                 <div key={i}>
                   <div

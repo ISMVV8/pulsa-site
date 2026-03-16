@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
 
           {/* Hero inner — generous padding like 8lab */}
-          <div className="px-4 pb-28 pt-28 text-center sm:px-8 lg:pt-36">
+          <div className="px-8 pb-28 pt-28 text-center sm:px-16 lg:pt-36">
             {/* Badge with rotating glow border like 8lab */}
             <div className="badge-8lab">
               <div className="badge-8lab-inner">

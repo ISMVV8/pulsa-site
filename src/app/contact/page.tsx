@@ -27,6 +27,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     budget: "",
@@ -39,7 +40,7 @@ export default function ContactPage() {
       `Demande de devis — ${formData.name}${formData.company ? ` (${formData.company})` : ""}`
     );
     const body = encodeURIComponent(
-      `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || "—"}\nService: ${formData.service || "—"}\nBudget: ${formData.budget || "—"}\n\nMessage:\n${formData.message}`
+      `Nom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone || "—"}\nEntreprise: ${formData.company || "—"}\nService: ${formData.service || "—"}\nBudget: ${formData.budget || "—"}\n\nMessage:\n${formData.message}`
     );
     window.location.href = `mailto:contact@pulsacreatives.com?subject=${subject}&body=${body}`;
   };
@@ -102,7 +103,7 @@ export default function ContactPage() {
             <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
             <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "5s" }} />
 
-            <div className="grid gap-10 py-16 lg:grid-cols-[1fr_340px]">
+            <div className="grid gap-10 px-4 py-16 sm:px-10 lg:grid-cols-[1fr_340px]">
               {/* Form */}
               <div className="overflow-hidden rounded-3xl border border-[#242429] bg-[#131316] p-6 sm:p-10">
                 <h2 className="font-[family-name:var(--font-heading)] text-xl font-medium text-white">
@@ -124,7 +125,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={(e) => update("name", e.target.value)}
                         required
-                        placeholder="John Doe"
+                        placeholder="Jean Dupont"
                         className="w-full rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
                       />
                     </div>
@@ -137,24 +138,38 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) => update("email", e.target.value)}
                         required
-                        placeholder="john@example.com"
+                        placeholder="jean@entreprise.be"
                         className="w-full rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
                       />
                     </div>
                   </div>
 
-                  {/* Company */}
-                  <div>
-                    <label className="mb-2 block text-[13px] font-medium text-[#abaaa8]">
-                      Entreprise
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => update("company", e.target.value)}
-                      placeholder="Votre entreprise (optionnel)"
+                  {/* Phone + Company */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-[13px] font-medium text-[#abaaa8]">
+                        Téléphone
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => update("phone", e.target.value)}
+                        placeholder="+32 4XX XX XX XX"
+                        className="w-full rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-[13px] font-medium text-[#abaaa8]">
+                        Entreprise
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => update("company", e.target.value)}
+                        placeholder="Votre entreprise (optionnel)"
                       className="w-full rounded-xl border border-[#ffffff12] bg-[#ffffff08] px-4 py-3 text-sm text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
                     />
+                    </div>
                   </div>
 
                   {/* Service */}
