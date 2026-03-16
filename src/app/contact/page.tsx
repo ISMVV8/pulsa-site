@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { Send, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Send, Mail, MapPin, Clock, ArrowRight, Check, Loader2 } from "lucide-react";
 
 const services = [
   "Site vitrine",
@@ -34,15 +34,28 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `Demande de devis — ${formData.name}${formData.company ? ` (${formData.company})` : ""}`
-    );
-    const body = encodeURIComponent(
-      `Nom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone || "—"}\nEntreprise: ${formData.company || "—"}\nService: ${formData.service || "—"}\nBudget: ${formData.budget || "—"}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:contact@pulsacreatives.com?subject=${subject}&body=${body}`;
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const update = (field: string, value: string) =>
@@ -236,15 +249,29 @@ export default function ContactPage() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="group flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975]"
+                    disabled={status === "loading"}
+                    className="group flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975] disabled:opacity-70"
                   >
-                    <Send size={16} />
-                    Envoyer ma demande
-                    <ArrowRight
-                      size={16}
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
+                    {status === "loading" ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <Send size={16} />
+                    )}
+                    {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande"}
                   </button>
+
+                  {status === "success" && (
+                    <div className="flex items-center gap-3 rounded-xl border border-[#22c55e]/20 bg-[#22c55e]/5 p-4">
+                      <Check size={18} className="text-[#22c55e]" />
+                      <p className="text-sm text-[#22c55e]">Demande envoyée ! Nous vous répondrons sous 24h.</p>
+                    </div>
+                  )}
+
+                  {status === "error" && (
+                    <p className="text-center text-sm text-red-400">
+                      Une erreur est survenue. Réessayez ou contactez-nous directement.
+                    </p>
+                  )}
                 </form>
               </div>
 

@@ -1,20 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Check, Loader2 } from "lucide-react";
 
 export default function CTA() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Demande de devis — ${name}`);
-    const body = encodeURIComponent(
-      `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:contact@pulsacreatives.com?subject=${subject}&body=${body}`;
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -81,42 +97,65 @@ export default function CTA() {
             </div>
 
             {/* Form */}
-            <form
-              onSubmit={handleSubmit}
-              className="mx-auto mt-12 flex max-w-[480px] flex-col gap-4"
-            >
-              <input
-                type="text"
-                placeholder="Votre nom"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
-              />
-              <input
-                type="email"
-                placeholder="Votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
-              />
-              <textarea
-                placeholder="Décrivez votre projet..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                required
-                className="resize-none rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
-              />
-              <button
-                type="submit"
-                className="group mt-2 flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975]"
+            {status === "success" ? (
+              <div className="mx-auto mt-12 flex max-w-[480px] flex-col items-center gap-4 rounded-2xl border border-[#22c55e]/20 bg-[#22c55e]/5 p-10 text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#22c55e]/10">
+                  <Check size={28} className="text-[#22c55e]" />
+                </div>
+                <h3 className="text-xl font-medium text-white">Demande envoyée !</h3>
+                <p className="text-[15px] text-[#abaaa8]">
+                  Merci, nous vous répondrons sous 24h.
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="mx-auto mt-12 flex max-w-[480px] flex-col gap-4"
               >
-                <Send size={16} />
-                Envoyer ma demande
-              </button>
-            </form>
+                <input
+                  type="text"
+                  placeholder="Votre nom"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
+                />
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
+                />
+                <textarea
+                  placeholder="Décrivez votre projet..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows={4}
+                  required
+                  className="resize-none rounded-xl border border-[#ffffff0f] bg-[#131316] px-5 py-3.5 text-[15px] text-white placeholder-[#5e5f6e] outline-none transition-colors focus:border-[#ffffff26]"
+                />
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="group mt-2 flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-[15px] font-medium text-black transition-all duration-350 hover:scale-[0.975] disabled:opacity-70"
+                >
+                  {status === "loading" ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                  {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande"}
+                </button>
+
+                {status === "error" && (
+                  <p className="text-center text-sm text-red-400">
+                    Une erreur est survenue. Réessayez ou contactez-nous directement.
+                  </p>
+                )}
+              </form>
+            )}
 
             <p className="mt-6 text-center text-[13px] text-[#5e5f6e]">
               Ou contactez-nous directement :{" "}
