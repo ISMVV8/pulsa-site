@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const footerLinks = {
   Services: [
     { label: "Sites Web", href: "#services" },
@@ -22,9 +24,18 @@ export default function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           {/* Logo + description */}
           <div className="max-w-[300px]">
-            <span className="font-heading text-xl font-semibold text-white">
-              PULSA
-            </span>
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/logo-pulsa.jpg"
+                alt="Pulsa Creatives"
+                width={32}
+                height={32}
+                className="rounded-sm brightness-0 invert"
+              />
+              <span className="font-heading text-xl font-semibold text-white">
+                PULSA
+              </span>
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-[#abaaa8]">
               Agence digitale premium à Bruxelles. Nous créons des expériences digitales qui convertissent.
             </p>

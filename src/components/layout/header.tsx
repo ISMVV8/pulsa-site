@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,10 +12,13 @@ export default function Header() {
       <div className="mx-auto flex h-[72px] max-w-[970px] items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2z" stroke="white" strokeWidth="1.5"/>
-            <path d="M10 16h12M16 10v12" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
+          <Image
+            src="/logo-pulsa.jpg"
+            alt="Pulsa Creatives"
+            width={36}
+            height={36}
+            className="rounded-sm brightness-0 invert"
+          />
           <span className="text-[18px] font-medium tracking-[-0.3px] text-white">Pulsa</span>
         </Link>
 
