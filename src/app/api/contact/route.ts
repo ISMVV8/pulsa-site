@@ -29,17 +29,13 @@ export async function POST(req: NextRequest) {
     );
 
     // 1. Save to CRM as a new contact/lead
-    const [firstName, ...lastParts] = name.trim().split(" ");
-    const lastName = lastParts.join(" ") || "";
-
     const { data: contact, error: contactError } = await supabase
       .from("contacts")
       .insert({
-        first_name: firstName,
-        last_name: lastName,
+        name: name.trim(),
         email,
         phone: phone || null,
-        company_name: company || null,
+        company: company || null,
         source: "website",
         status: "lead",
         notes: [
