@@ -184,23 +184,23 @@ export default function Hero() {
           <div className="line-sweep-v absolute bottom-0 left-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "1s" }} />
           <div className="line-sweep-v absolute bottom-0 right-0 top-0 w-px bg-[#ffffff0f]" style={{ animationDelay: "4s" }} />
 
-          <div className="grid grid-cols-3 sm:grid-cols-6">
+          <div className="flex overflow-x-auto sm:grid sm:grid-cols-6 sm:overflow-visible">
             {listingItems.map((item, i) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.label}
-                  className={`flex items-center justify-center gap-2.5 py-5 ${
+                  className={`flex flex-shrink-0 items-center justify-center gap-2 px-5 py-4 sm:px-0 sm:py-5 ${
                     i < listingItems.length - 1
                       ? "border-r border-[#ffffff0f]"
                       : ""
                   }`}
                 >
                   <Icon
-                    className="h-[18px] w-[18px] text-[#5e5f6e]"
+                    className="h-[16px] w-[16px] text-[#5e5f6e] sm:h-[18px] sm:w-[18px]"
                     strokeWidth={1.5}
                   />
-                  <span className="text-[14px] font-light text-white">
+                  <span className="whitespace-nowrap text-[13px] font-light text-white sm:text-[14px]">
                     {item.label}
                   </span>
                 </div>
